@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">FARM MANAGEMENT SYSTEM</string>
+    <string name="login_here_txt">LOGIN HERE</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_in_btn">SIGN IN</string>
+
+    <string name="don_t_have_an_account_txt">Don\'t have an Account?</string>
+    <string name="register_here_btn_txt">REGISTER HERE</string>
+    <string name="sign_up_btn_txt">SIGN UP</string>
+    <string name="back_to_login_txt_btn">Back to Login</string>
+    <string name="change_password_txt_btn">CHANGE PASSWORD</string>
+    <string name="add_growth_data_btn_txt">+ Add Growth Data</string>
+    <string name="register_txt">Register</string>
+    <string name="forgot_password_page_txt">FORGOT PASSWORD</string>
+    <string name="register_your_account_txt">Register your account</string>
+
+    <string name="email_hint">EMAIL</string>
+    <string name="password_hint">PASSWORD</string>
+    <string name="username_hint">USERNAME</string>
+    <string name="new_password_hint">NEW PASSWORD</string>
+    <string name="confirm_new_password_hint">CONFIRM NEW PASSWORD</string>
+    <string name="search_hint">Search</string>
+
+    <string-array name="countries_array">
+        <item>Select Country</item>
+        <item>Philippines</item>
+        <item>Thailand</item>
+        <item>Vietnam</item>
+        <item>Indonesia</item>
+    </string-array>
+
+    <string name="health_stat">Health Status</string>
+    <string name="mortality_r">Mortality Rate</string>
+    <string name="growth_prog">Growth Progress</string>
+
+    <string name="tracking">TRACKING</string>
+    <string name="statistics_txt">STATISTICS</string>
+    <string name="average_wei">Average Weight</string>
+    <string name="farm_1_2_3_">FARM 1: 2.3 kg</string>
+    <string name="add_growth_">+ Add Growth Data</string>
+    <string name="days">1-14 Days</string>
+    <string name="days2">15-28 Days</string>
+    <string name="days3">29-45 Days</string>
+    <string name="products">Products</string>
+    <string name="all">All</string>
+    <string name="feeds">Feeds</string>
+    <string name="vet">Vet</string>
+    <string name="more_info">More Info</string>
+    <string name="average_weight">Average weight: 2.5/3.0 Kg</string>
+    <string name="farm_1_100_">FARM 1: 100 chickens</string>
+    <string name="farm_2_200_">FARM 2: 200 chickens</string>
+    <string name="remarks_you">Remarks: Your average weight is below the ideal</string>
+    <string name="growth">Growth</string>
+    <string name="mortality">Mortality</string>
+    <string name="add_information">Add Information</string>
+    <string name="farm_size">Farm Size</string>
+    <string name="sample_size">Sample Size</string>
+    <string name="sample_1">Sample 1</string>
+    <string name="sample_2">Sample 2</string>
+    <string name="apply_changes">APPLY CHANGES</string>
+    <string name="todo">TODO\n</string>
+
+    <string name="farm_name">Farm Name:</string>
+
+    <string name="size">Size</string>
+    <string name="Days_Old">Days Old</string>
+
+</resources>
