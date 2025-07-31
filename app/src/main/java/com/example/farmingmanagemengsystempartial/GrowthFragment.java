@@ -1,7 +1,9 @@
 package com.example.farmingmanagemengsystempartial;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class GrowthFragment extends Fragment {
     Dialog dialog;
@@ -29,12 +32,23 @@ public class GrowthFragment extends Fragment {
     Button addGrowthData;
     private WeightBarView weightBarView;
 
+    private Date initialUpdateDate; // Track the initial update date
+    private static final String PREFS_NAME = "GrowthPrefs";
+    private static final String KEY_INITIAL_DATE = "initialUpdateDate";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_growth, container, false);
 
-        // For setting text in panel
+        // Load the initial update date from SharedPreferences
+        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        long initialDateMillis = prefs.getLong(KEY_INITIAL_DATE, -1);
+        if (initialDateMillis != -1) {
+            initialUpdateDate = new Date(initialDateMillis);
+        }
+
+        // For setting text in the panel
         TextView sizeValString = view.findViewById(R.id.sizeValue);
         TextView dayValString = view.findViewById(R.id.daysOldValue);
         TextView averageWeightValString = view.findViewById(R.id.averageWeightValue);
@@ -80,7 +94,7 @@ public class GrowthFragment extends Fragment {
                 if (s.toString().isEmpty()) {
                     sampleSizeEdit.setError("Sample size cannot be empty");
                 } else {
-                    sampleSizeEdit.setError(null); // Clear error if valid
+                    sampleSizeEdit.setError(null);
                 }
             }
             @Override
@@ -112,7 +126,6 @@ public class GrowthFragment extends Fragment {
             String sampleSizeString = sampleSizeEdit.getText().toString();
 
             if (!sizeString.isEmpty() && !sampleSizeString.isEmpty()) {
-                int size = Integer.parseInt(sizeString);
                 int sampleSize = Integer.parseInt(sampleSizeString);
                 float totalWeight = 0;
                 boolean allWeightsFilled = true;
@@ -135,11 +148,23 @@ public class GrowthFragment extends Fragment {
                 float averageWeight = totalWeight / sampleSize;
                 float deviation = ((averageWeight - 3.0f) / 3.0f) * 100; // Calculating deviation in percentage
 
+                // Set initial date if it's the first update
+                if (initialUpdateDate == null) {
+                    initialUpdateDate = new Date(); // Set the initial update date
+                    SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putLong(KEY_INITIAL_DATE, initialUpdateDate.getTime());
+                    editor.apply();
+                }
+
+                // Calculate and update days old
+                int daysOld = calculateDaysOld();
+
                 sizeValString.setText(sizeString);
-                dayValString.setText("10"); // Placeholder value
+                dayValString.setText(String.valueOf(daysOld)); // Update days old
                 averageWeightValString.setText(String.format("%.2f/3.0kg", averageWeight));
                 targetValString.setText(String.format("%.2f%%", deviation));
-                weightBarView.setAverageWeight(averageWeight);
+
             } else {
                 Toast.makeText(getActivity(), "Please fill required fields.", Toast.LENGTH_SHORT).show();
             }
@@ -148,6 +173,16 @@ public class GrowthFragment extends Fragment {
         });
 
         dialog.show();
+    }
+
+    private int calculateDaysOld() {
+        if (initialUpdateDate == null) return 0; // No updates yet
+
+        Calendar initialCal = Calendar.getInstance();
+        initialCal.setTime(initialUpdateDate);
+        Calendar currentCal = Calendar.getInstance();
+        long diffInMillis = currentCal.getTimeInMillis() - initialCal.getTimeInMillis();
+        return (int) (diffInMillis / (1000 * 60 * 60 * 24)) + 1; // Convert to days and add 1 for initial update
     }
 
     private void initDatePicker(Button datePickerButton) {
@@ -168,14 +203,6 @@ public class GrowthFragment extends Fragment {
             String date = makeDateString(day, month, year);
             datePickerButton.setText(date); // Update the button text with the selected date
         });
-    }
-
-    private String getTodaysDate() {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) + 1; // Month is 0-based
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day, month, year);
     }
 
     private String makeDateString(int day, int month, int year) {
