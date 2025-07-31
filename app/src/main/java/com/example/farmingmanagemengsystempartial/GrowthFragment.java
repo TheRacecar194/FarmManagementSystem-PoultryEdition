@@ -35,6 +35,10 @@ public class GrowthFragment extends Fragment {
     private Date initialUpdateDate; // Track the initial update date
     private static final String PREFS_NAME = "GrowthPrefs";
     private static final String KEY_INITIAL_DATE = "initialUpdateDate";
+    private static final String KEY_TRACKING_START_DATE = "trackingStartDate"; // New preference key
+
+    // Track selected date
+    private Date selectedDate = null;
 
     @Nullable
     @Override
@@ -83,7 +87,7 @@ public class GrowthFragment extends Fragment {
         Button datePickerButton = dialog.findViewById(R.id.datePickerBtn);
 
         // Initialize the date picker
-        initDatePicker(datePickerButton);
+        //initDatePicker(datePickerButton);
 
         // Sample size restriction
         sampleSizeEdit.addTextChangedListener(new TextWatcher() {
@@ -120,6 +124,39 @@ public class GrowthFragment extends Fragment {
             }
         });
 
+        // Initialize the date picker
+        datePickerButton.setOnClickListener(v -> {
+            MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Select start date")
+                    .setPositiveButtonText("OK")
+                    .setNegativeButtonText("Cancel")
+                    .build();
+            datePicker.show(getParentFragmentManager(), "DATE_PICKER");
+            datePicker.addOnPositiveButtonClickListener(selection -> {
+                selectedDate = new Date(selection);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(selection);
+                datePickerButton.setText(makeDateString(
+                        calendar.get(Calendar.DAY_OF_MONTH),
+                        calendar.get(Calendar.MONTH) + 1,
+                        calendar.get(Calendar.YEAR)
+                ));
+
+                // Check if the selected date is in the future
+                if (selectedDate.after(new Date())) {
+                    Toast.makeText(getActivity(), "Selected date cannot be in the future.", Toast.LENGTH_SHORT).show();
+                    selectedDate = null; // Reset selected date
+                    return;
+                }
+
+                // Save the selected date as tracking start date immediately
+                SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putLong(KEY_TRACKING_START_DATE, selectedDate.getTime());
+                editor.apply();
+            });
+        });
+
         // Dialog box
         applyChanges.setOnClickListener(v -> {
             String sizeString = sizeEdit.getText().toString();
@@ -145,6 +182,11 @@ public class GrowthFragment extends Fragment {
                     return;
                 }
 
+                if (selectedDate == null) {
+                    Toast.makeText(getActivity(), "Please select a valid start date", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 float averageWeight = totalWeight / sampleSize;
                 float deviation = ((averageWeight - 3.0f) / 3.0f) * 100; // Calculating deviation in percentage
 
@@ -157,8 +199,11 @@ public class GrowthFragment extends Fragment {
                     editor.apply();
                 }
 
-                // Calculate and update days old
-                int daysOld = calculateDaysOld();
+                // Always calculate days from the tracked start date
+                SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                long startDateMillis = prefs.getLong(KEY_TRACKING_START_DATE, System.currentTimeMillis());
+                Date startDate = new Date(startDateMillis);
+                int daysOld = calculateDaysOld(startDate);
 
                 sizeValString.setText(sizeString);
                 dayValString.setText(String.valueOf(daysOld)); // Update days old
@@ -175,34 +220,12 @@ public class GrowthFragment extends Fragment {
         dialog.show();
     }
 
-    private int calculateDaysOld() {
-        if (initialUpdateDate == null) return 0; // No updates yet
-
-        Calendar initialCal = Calendar.getInstance();
-        initialCal.setTime(initialUpdateDate);
+    private int calculateDaysOld(Date startDate) {
+        Calendar startCal = Calendar.getInstance();
+        startCal.setTime(startDate);
         Calendar currentCal = Calendar.getInstance();
-        long diffInMillis = currentCal.getTimeInMillis() - initialCal.getTimeInMillis();
-        return (int) (diffInMillis / (1000 * 60 * 60 * 24)) + 1; // Convert to days and add 1 for initial update
-    }
-
-    private void initDatePicker(Button datePickerButton) {
-        MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Select a date")
-                .setPositiveButtonText("OK")
-                .setNegativeButtonText("Cancel")
-                .build();
-
-        datePickerButton.setOnClickListener(v -> datePicker.show(getParentFragmentManager(), "DATE_PICKER"));
-
-        datePicker.addOnPositiveButtonClickListener(selection -> {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(selection);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int month = calendar.get(Calendar.MONTH) + 1; // Month is 0-based
-            int year = calendar.get(Calendar.YEAR);
-            String date = makeDateString(day, month, year);
-            datePickerButton.setText(date); // Update the button text with the selected date
-        });
+        long diffInMillis = currentCal.getTimeInMillis() - startCal.getTimeInMillis();
+        return (int) (diffInMillis / (1000 * 60 * 60 * 24)) + 1; // +1 to count the first day
     }
 
     private String makeDateString(int day, int month, int year) {
