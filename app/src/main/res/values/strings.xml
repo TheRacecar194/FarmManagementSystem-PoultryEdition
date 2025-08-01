@@ -64,5 +64,6 @@
 
     <string name="size">Size</string>
     <string name="Days_Old">Days Old</string>
+    <string name="add_feeding_data_btn">+Add Feeding Data</string>
 
 </resources>
