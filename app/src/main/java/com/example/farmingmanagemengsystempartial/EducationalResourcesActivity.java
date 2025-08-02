@@ -1,9 +1,10 @@
 package com.example.farmingmanagemengsystempartial;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,19 +14,32 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class EducationalResourcesActivity extends AppCompatActivity {
 
+    ImageView Back, LinkButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_educational_resources);
 
-        Button bh_btn = findViewById(R.id.BackHome);
+        Back = findViewById(R.id.imageView50);
 
-        bh_btn.setOnClickListener(new View.OnClickListener() {
+        Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent EDRIntent = new Intent(EducationalResourcesActivity.this, DashboardActivity.class);
-                startActivity(EDRIntent);
+                Intent intent = new Intent(EducationalResourcesActivity.this, DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinkButton = findViewById(R.id.imageView61);
+
+        LinkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://www.gmanetwork.com/lifestyle/food/124846/this-chicken-business-owner-didnt-let-a-scam-bring-him-down/story";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
             }
         });
 

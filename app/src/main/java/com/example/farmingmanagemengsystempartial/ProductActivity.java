@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ProductActivity extends AppCompatActivity {
 
-    ImageView Back;
+    ImageView Back, MoreInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,16 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProductActivity.this, DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        MoreInfo = findViewById(R.id.imageView57);
+
+        MoreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(ProductActivity.this, ProductExpanded.class);
                 startActivity(intent);
             }
         });
