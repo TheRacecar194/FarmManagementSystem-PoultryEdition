@@ -69,6 +69,16 @@
         app:layout_constraintTop_toBottomOf="@+id/Enter_Amount_In_Kilograms_txt" />
 
     <Button
+        android:id="@+id/datePickerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Select Date"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/ApplyChangesBTN"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -76,7 +86,7 @@
         android:backgroundTint="@color/neon_green"
         android:text="Apply Changes"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber3"
+        app:layout_constraintTop_toBottomOf="@id/datePickerBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -22,6 +21,7 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
 
         Back = findViewById(R.id.imageView13);
+        MoreInfo = findViewById(R.id.imageView57);
 
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,12 +31,10 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-        MoreInfo = findViewById(R.id.imageView57);
-
         MoreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(ProductActivity.this, ProductExpanded.class);
+                Intent intent = new Intent(ProductActivity.this, ProductExpanded.class);
                 startActivity(intent);
             }
         });

@@ -24,7 +24,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.081" />
@@ -32,7 +32,7 @@
     <ImageView
         android:id="@+id/rectangle_"
         android:layout_width="364dp"
-        android:layout_height="220dp"
+        android:layout_height="230dp"
         android:background="@drawable/rectangle_35"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +157,7 @@
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/feed_chart"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="@+id/rectangle_"
         app:layout_constraintEnd_toEndOf="@+id/rectangle_"
         app:layout_constraintHorizontal_bias="0.0"
@@ -187,12 +187,13 @@
         android:id="@+id/perChickenValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
-        android:text="0.35kg"
+        android:text="0kg"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_"
         app:layout_constraintEnd_toEndOf="@+id/rectangle_"
-        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintHorizontal_bias="0.697"
         app:layout_constraintStart_toStartOf="@+id/rectangle_"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_" />
+        app:layout_constraintTop_toTopOf="@+id/rectangle_"
+        app:layout_constraintVertical_bias="0.98" />
 
     <TextView
         android:id="@+id/totalFeedsValue"
@@ -201,8 +202,9 @@
         android:layout_marginTop="20dp"
         android:text="0kg"
         android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_"
         app:layout_constraintEnd_toEndOf="@+id/rectangle_"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="@+id/rectangle_"
         app:layout_constraintTop_toBottomOf="@+id/feed_chart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
