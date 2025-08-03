@@ -12,6 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class DashboardActivity extends AppCompatActivity {
 
     @Override
@@ -61,28 +64,29 @@ public class DashboardActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
         EditText editFarmName = dialogView.findViewById(R.id.edit_farm_name);
-        EditText editNumberOfChickens = dialogView.findViewById(R.id.edit_number_of_chickens);
-        EditText editAverageWeight = dialogView.findViewById(R.id.edit_average_weight);
         Button buttonAddFarm = dialogView.findViewById(R.id.button_add_farm);
         TextView textCancel = dialogView.findViewById(R.id.text_cancel);
 
         buttonAddFarm.setOnClickListener(v -> {
             String farmName = editFarmName.getText().toString();
-            String numberOfChickensStr = editNumberOfChickens.getText().toString();
-            String averageWeightStr = editAverageWeight.getText().toString();
 
-            if (!farmName.isEmpty() && !numberOfChickensStr.isEmpty() && !averageWeightStr.isEmpty()) {
-                int numberOfChickens = Integer.parseInt(numberOfChickensStr);
-                float averageWeight = Float.parseFloat(averageWeightStr);
-                FarmManager.getInstance().addFarm(farmName, numberOfChickens, averageWeight); // Add farm with data
-                Toast.makeText(DashboardActivity.this, "Farm added: " + farmName, Toast.LENGTH_SHORT).show();
+            //special character check
+            Pattern specialCheck = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE);
+            Matcher specialMatch = specialCheck.matcher(farmName);
+            Boolean specialFind = specialMatch.find();
 
-                // Clear fields after adding
-                editFarmName.setText("");
-                editNumberOfChickens.setText("");
-                editAverageWeight.setText("");
+            if (!farmName.isEmpty()) {
+                if(specialFind){
+                    Toast.makeText(DashboardActivity.this, "No special characters.", Toast.LENGTH_SHORT).show();
+                    editFarmName.setText("");
+                }else{
+                    FarmManager.getInstance().addFarm(farmName); // Add farm with data
+                    Toast.makeText(DashboardActivity.this, "Farm added: " + farmName, Toast.LENGTH_SHORT).show();
+                    // Clear fields after adding
+                    editFarmName.setText("");
+                }
             } else {
-                Toast.makeText(DashboardActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this, "Please fill in the field.", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -142,12 +142,20 @@ public class GrowthFragment extends Fragment {
                         calendar.get(Calendar.YEAR)
                 ));
 
-                // Check if the selected date is in the future
+                //safeguard: user will only be able to choose current day.
+                //if selected date is in the future
                 if (selectedDate.after(new Date())) {
                     Toast.makeText(getActivity(), "Selected date cannot be in the future.", Toast.LENGTH_SHORT).show();
                     selectedDate = null; // Reset selected date
                     return;
                 }
+                //if selected date is in the past (intended to be temporary)
+                if(selectedDate.before(new Date())){
+                    Toast.makeText(getActivity(), "Selected date cannot be in the past.", Toast.LENGTH_SHORT).show();
+                    selectedDate = null; // Reset selected date
+                    return;
+                }
+
 
                 // Save the selected date as tracking start date immediately
                 SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);

@@ -19,18 +19,6 @@
         android:layout_height="wrap_content"
         android:hint="Farm Name"/>
 
-    <EditText
-        android:id="@+id/edit_number_of_chickens"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Number of Chickens"/>
-
-    <EditText
-        android:id="@+id/edit_average_weight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Average Weight (kg)"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
