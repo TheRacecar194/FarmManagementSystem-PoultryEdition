@@ -24,8 +24,8 @@ import java.util.List;
 public class MortalityFragment extends Fragment {
 
     Dialog dialog;
-    ImageView Back, AddReportData, applyChanges;
-    TextView Feeds, Growth, remainingChickensText, mortalityRateText;
+    ImageView AddReportData, applyChanges;
+    TextView remainingChickensText, mortalityRateText;
     Calendar calendar;
     RecyclerView recyclerView;
     MortalityAdapter adapter;
@@ -99,23 +99,6 @@ public class MortalityFragment extends Fragment {
             dialog.show();
         });
 
-        Back = view.findViewById(R.id.imageView31);
-        Back.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), DashboardActivity.class);
-            startActivity(intent);
-        });
-
-        Feeds = view.findViewById(R.id.feeds3);
-        Feeds.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), AnimalTrackFeeds.class);
-            startActivity(intent);
-        });
-
-        Growth = view.findViewById(R.id.growth3);
-        Growth.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), AnimalTrackActivity.class);
-            startActivity(intent);
-        });
     }
 
     private void showDatePicker(EditText dialogDate) {
