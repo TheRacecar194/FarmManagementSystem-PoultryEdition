@@ -182,7 +182,7 @@
         android:layout_alignParentTop="true"
         android:gravity="top"
         android:text="@string/farm_name_f"
-        android:textAppearance="@style/farm_name_f"
+        android:textAppearance="@style/farm_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.145"

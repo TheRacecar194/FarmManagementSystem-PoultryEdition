@@ -387,4 +387,33 @@
     <string name="news_description">
     NEWS : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     </string>
+
+    <string name="forgot_password_page_txt">FORGOT PASSWORD</string>
+
+    <string name="new_password_hint">New Password</string>
+
+    <string name="confirm_new_password_hint">Confirm New Password</string>
+
+    <string name="change_password_txt_btn">CHANGE PASSWORD</string>
+
+    <string name="back_to_login_txt_btn">Back to Login</string>
+
+    <string name="product_Name">Insert Product Name</string>
+
+    <string name="todo">TODO\n</string>
+
+    <string name="register_your_account_txt">Register your account</string>
+
+    <string name="username_hint">Username</string>
+
+    <string name="sign_up_btn_txt">SIGN UP</string>
+
+    <string name="farm_name">Farm Name: Farm 1</string>
+
+    <string name="add_feeding_data_btn">+ Add Feeding Data</string>
+
+    <string name="Days_Old">Days Old</string>
+
+    <string name="add_growth_data_btn_txt">+ Add Growth Data</string>
+
 </resources>
