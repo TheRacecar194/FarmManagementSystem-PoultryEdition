@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="FUCK SHIT"
+        android:text="FOR FUTURE RELEASE :)"
         android:textSize="25dp"
         android:textStyle="bold" />
 

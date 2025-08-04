@@ -1,9 +1,11 @@
 package com.example.farmingmanagemengsystempartial;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,17 +24,12 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        ImageView notification = findViewById(R.id.notificationTab);
         ImageView animalTrack = findViewById(R.id.trackingTab);
         ImageView product = findViewById(R.id.productTab);
         ImageView educationalResources = findViewById(R.id.eduResourceTab);
         ImageView settings = findViewById(R.id.settingsTab);
         Button buttonAddFarm = findViewById(R.id.button_add_farm); // Make sure this button is in your layout
 
-        notification.setOnClickListener(v -> {
-            Intent intent = new Intent(DashboardActivity.this, NotificationActivity.class);
-            startActivity(intent);
-        });
 
         animalTrack.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, AnimalTrackActivity.class);
@@ -63,6 +60,8 @@ public class DashboardActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.dialog_add_farm, null);
         builder.setView(dialogView);
 
+        TextView FarmOne = findViewById(R.id.farm_1);
+
         EditText editFarmName = dialogView.findViewById(R.id.edit_farm_name);
         Button buttonAddFarm = dialogView.findViewById(R.id.button_add_farm);
         TextView textCancel = dialogView.findViewById(R.id.text_cancel);
@@ -84,6 +83,9 @@ public class DashboardActivity extends AppCompatActivity {
                     Toast.makeText(DashboardActivity.this, "Farm added: " + farmName, Toast.LENGTH_SHORT).show();
                     // Clear fields after adding
                     editFarmName.setText("");
+
+                    //display farm name
+                    FarmOne.setText(farmName);
                 }
             } else {
                 Toast.makeText(DashboardActivity.this, "Please fill in the field.", Toast.LENGTH_SHORT).show();
@@ -94,5 +96,19 @@ public class DashboardActivity extends AppCompatActivity {
         dialog.show();
 
         textCancel.setOnClickListener(v -> dialog.dismiss());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences("GrowthPrefs", MODE_PRIVATE);
+        float averageWeight = prefs.getFloat("averageWeight", 0); // Default to 0 if not set
+        // Update rectangle_11 based on averageWeight
+        View rectangle11 = findViewById(R.id.rectangle_11);
+        // Assuming the height of rectangle_11 is proportional to averageWeight
+        float newHeight = averageWeight * 10; // Example scaling factor
+        ViewGroup.LayoutParams params = rectangle11.getLayoutParams();
+        params.height = (int) newHeight; // Set new height
+        rectangle11.setLayoutParams(params);
     }
 }

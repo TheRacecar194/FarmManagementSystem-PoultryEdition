@@ -25,6 +25,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class GrowthFragment extends Fragment {
     Dialog dialog;
@@ -57,6 +58,7 @@ public class GrowthFragment extends Fragment {
         TextView dayValString = view.findViewById(R.id.daysOldValue);
         TextView averageWeightValString = view.findViewById(R.id.averageWeightValue);
         TextView targetValString = view.findViewById(R.id.targetValue);
+        TextView FarmName = view.findViewById(R.id.farm_name_f);
 
         weightBarView = view.findViewById(R.id.weightBar);
         weightBarView.setAverageWeight(2.5f); // Example weight
@@ -215,6 +217,13 @@ public class GrowthFragment extends Fragment {
             }
 
             dialog.dismiss();
+
+            // Inside the applyChanges.setOnClickListener
+            SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putFloat("averageWeight", Float.valueOf(String.valueOf(averageWeightValString))); // Save average weight
+            editor.apply();
+
         });
 
         dialog.show();
@@ -249,4 +258,5 @@ public class GrowthFragment extends Fragment {
             default: return "JAN"; // Default should never happen
         }
     }
+
 }

@@ -27,26 +27,6 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/notificationTab"
-        android:layout_width="40dp"
-        android:layout_height="38dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:contentDescription="@string/todo"
-        android:focusable="true"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073"
-        app:srcCompat="@drawable/vector"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
         android:id="@+id/rectangle_7"
         android:layout_width="412dp"
         android:layout_height="71dp"
@@ -226,7 +206,7 @@
     <View
         android:id="@+id/rectangle_8"
         android:layout_width="324dp"
-        android:layout_height="554dp"
+        android:layout_height="504dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/rectangle_8"
@@ -235,208 +215,80 @@
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
-
-    <View
-        android:id="@+id/rectangle_12"
-        android:layout_width="38dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#00441B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintVertical_bias="0.929" />
 
     <View
         android:id="@+id/rectangle_10"
-        android:layout_width="38dp"
+        android:layout_width="270dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#1B7837"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.398" />
+        app:layout_constraintVertical_bias="0.533" />
 
     <View
         android:id="@+id/rectangle_11"
-        android:layout_width="127dp"
+        android:layout_width="270dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#5AAE61"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.281"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
-
-    <View
-        android:id="@+id/rectangle_17"
-        android:layout_width="101dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#5AAE61"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.858" />
+        app:layout_constraintVertical_bias="0.601" />
 
     <TextView
         android:id="@+id/farm_1"
-        android:layout_width="69dp"
+        android:layout_width="200dp"
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:gravity="top"
-        android:text="farm 1"
+        android:text="Unnamed Farm"
         android:textAppearance="@style/farm_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
+        app:layout_constraintHorizontal_bias="0.331"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.316" />
-
-    <View
-        android:id="@+id/rectangle_13"
-        android:layout_width="256dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#1B7837"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688"
-        app:srcCompat="@drawable/line_1" />
-
-    <View
-        android:id="@+id/rectangle_14"
-        android:layout_width="275dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#5AAE61"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.588"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.651" />
-
-    <TextView
-        android:id="@+id/farm_2"
-        android:layout_width="69dp"
-        android:layout_height="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="top"
-        android:text="farm 2"
-        android:textAppearance="@style/farm_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintVertical_bias="0.422" />
 
     <View
         android:id="@+id/rectangle_9"
-        android:layout_width="218dp"
+        android:layout_width="270dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#00441B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
-
-    <TextView
-        android:id="@+id/farm_3"
-        android:layout_width="69dp"
-        android:layout_height="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="top"
-        android:text="farm 3"
-        android:textAppearance="@style/farm_3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
+        app:layout_constraintVertical_bias="0.47" />
 
     <Button
         android:id="@+id/button_add_farm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="68dp"
         android:layout_margin="16dp"
         android:backgroundTint="@color/green"
         android:text="ADD FARM"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
-
-    <View
-        android:id="@+id/rectangle_15"
-        android:layout_width="256dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#00441B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772" />
-
-    <View
-        android:id="@+id/rectangle_16"
-        android:layout_width="129dp"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#1B7837"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.283"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.815" />
+        app:layout_constraintVertical_bias="0.751" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -445,10 +297,10 @@
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482"
+        app:layout_constraintVertical_bias="0.646"
         app:srcCompat="@drawable/line_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
